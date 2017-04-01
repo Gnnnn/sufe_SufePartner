@@ -138,7 +138,7 @@ $('.language_view').click(function(){
     }
     $.getJSON("re/publish.php?request=language_view",function(data){
         console.log(data)
-        console.log(data.length)
+        // console.log(data.length)
         for(i=0;i<data.length;i++){
                 console.log(data[i].qusinfo)
                 var a = ".div" + (i+1)
