@@ -330,4 +330,141 @@ if($request=="viewdetails")
   }
 }
 
+<<<<<<< HEAD
+=======
+
+if($request=="mypublish"){
+  $username=$_SESSION["username"];
+  if(!$username){
+    echo "<script>self.location='../index.html'</script>";  
+  }
+  else{
+      $con = new mysqli("59.110.139.81","root","Pypy0101","SufePartner");
+      mysqli_query($con,"SET NAMES 'UTF8'");
+      $result=mysqli_query($con,"SELECT `qusid`FROM qus WHERE `username`= '{$username}';");
+      $qusnum = mysqli_num_rows($result);
+      $temp=array();
+      while($res=mysqli_fetch_assoc($result)) {
+            $temp[]=$res[qusid];
+        }
+      foreach ($temp as $value) {
+        // echo $value;
+      $result = mysqli_query($con,"SELECT `qustitle`,`qusinfo`,`qustel`,`qusloca`,`over`,`qustime`,`helper` from qus where qusid = {$value};");
+      $row = mysqli_fetch_array($result);
+      if(!$row["helper"]){
+        $oq["qustel"]=null;   
+        // $oq["qusloca"]=$row["qusloca"];   
+        $oq["qustime"]=$row["qustime"];
+        $oq["qustitle"]=$row["qustitle"];
+        $oq["qusinfo"]=$row["qusinfo"];
+        $oq["username"]="目前无人接受。";
+        $oq["over"]=$row["over"];
+      }
+      else{
+        // echo $row["helper"]." ";
+        $result1 = mysqli_query($con,"SELECT `usertel` from user where `username` = '{$row["helper"]}';");
+        $row1 = mysqli_fetch_array($result1);
+        $oq["qustel"]=$row1["usertel"];  
+        // $oq["qusloca"]=$row["qusloca"];   
+        $oq["qustime"]=$row["qustime"];
+        $oq["qustitle"]=$row["qustitle"];
+        $oq["qusinfo"]=$row["qusinfo"];
+        $oq["username"]=$row["helper"];
+        $oq["over"]=$row["over"];
+      }
+      $listJson[]=$oq;
+      }
+      // echo json_encode(array("qusnum"=>$qusnum));
+      echo json_encode($listJson);
+  }
+  return;
+}
+
+if($request=="competeTaskS"){
+  $qustitle=$_POST["qustitle"];
+  $username=$_SESSION["username"];
+  if(!$username){
+    echo "<script>self.location='../index.html'</script>";  
+  }
+  else{
+    $con = new mysqli("59.110.139.81","root","Pypy0101","SufePartner");
+      mysqli_query($con,"SET NAMES 'UTF8'");
+      $qustitle = strtolower($qustitle);
+    $result = mysqli_query($con,"SELECT qusid from qus where qustitle = '{$qustitle}';");//根据题目相同找到了题号
+    $row = mysqli_fetch_array($result);//题号$row
+    $thisqusid = $row["qusid"];
+    $result = mysqli_query($con,"UPDATE qus SET `over`=1,`succ`=1 where `qusid`={$thisqusid};");//成功完成，积分转移
+    $result = mysqli_query($con,"SELECT `over` from qus where `qusid`={$thisqusid};");//成功完成，积分转移
+      if(!mysqli_fetch_array($result)){
+      echo json_encode(array("isUpdate"=>0));
+      return;
+      } 
+      else{
+      echo json_encode(array("isUpdate"=>1));
+      return;
+      }
+  }
+}
+
+if($request=="competeTaskE"){
+  $qustitle=$_POST["qustitle"];
+  $username=$_SESSION["username"];
+  if(!$username){
+    echo "<script>self.location='../index.html'</script>";  
+  }
+  else{
+    $con = new mysqli("59.110.139.81","root","Pypy0101","SufePartner");
+      mysqli_query($con,"SET NAMES 'UTF8'");
+      $qustitle = strtolower($qustitle);
+    $result = mysqli_query($con,"SELECT qusid from qus where qustitle = '{$qustitle}';");//根据题目相同找到了题号
+    $row = mysqli_fetch_array($result);//题号$row
+    $thisqusid = $row["qusid"];
+    $result = mysqli_query($con,"DELETE FROM qus where qusid = {$thisqusid};");
+    $result = mysqli_query($con,"SELECT qusid FROM qus where qusid = {$thisqusid};");
+      if(!mysqli_num_rows($result)){
+      echo json_encode(array("isUpdate"=>1));
+      return;
+      } 
+      else{
+      echo json_encode(array("isUpdate"=>0));
+      return;
+      }
+  }
+}
+
+if($request=="myrec"){
+  $username=$_SESSION["username"];
+  if(!$username){
+    echo "<script>self.location='../index.html'</script>";  
+  }
+  else{
+      $con = new mysqli("59.110.139.81","root","Pypy0101","SufePartner");
+      mysqli_query($con,"SET NAMES 'UTF8'");
+      $result=mysqli_query($con,"SELECT `qusid` FROM qus WHERE `helper`= '{$username}';");
+      $qusnum = mysqli_num_rows($result);
+      $temp=array();
+      while($res=mysqli_fetch_assoc($result)) {
+            $temp[]=$res[qusid];
+        }
+      foreach ($temp as $value) {
+        // echo $value;
+      $result = mysqli_query($con,"SELECT `qustitle`,`qusinfo`,`qustel`,`qusloca`,`over`,`qustime`,`username` from qus where qusid = {$value};");
+      $row = mysqli_fetch_array($result);
+        // echo $row["helper"]." ";
+        $oq["qustel"]=$row["qustel"];  
+        $oq["qusloca"]=$row["qusloca"];   
+        $oq["qustime"]=$row["qustime"];
+        $oq["qustitle"]=$row["qustitle"];
+        $oq["qusinfo"]=$row["qusinfo"];
+        $oq["username"]=$row["username"];
+        $oq["over"]=$row["over"];
+      $listJson[]=$oq;
+      }
+      // echo json_encode(array("qusnum"=>$qusnum));
+      echo json_encode($listJson);
+  }
+  return;
+}
+
+>>>>>>> 9f8a665f677b0920088106a799008d1f569b527a
 ?>  

@@ -138,7 +138,11 @@ $('.language_view').click(function(){
     }
     $.getJSON("re/publish.php?request=language_view",function(data){
         console.log(data)
+<<<<<<< HEAD
         console.log(data.length)
+=======
+        // console.log(data.length)
+>>>>>>> 9f8a665f677b0920088106a799008d1f569b527a
         for(i=0;i<data.length;i++){
                 console.log(data[i].qusinfo)
                 var a = ".div" + (i+1)
