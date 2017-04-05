@@ -3716,3 +3716,9 @@ border:1px solid  #f53753;
 .newdetail{
   border-bottom:1px solid  #f53753;
 }
+.myanswer{
+ height: 200px;
+  width: 800px;
+  border: solid;
+  border-color: #f53753;
+}

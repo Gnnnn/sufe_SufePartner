@@ -26,7 +26,7 @@ $('.competed').click(function(){
     console.log($(".usertel").val())
     console.log($(".usermail").val())
     $.ajax({
-            url:'re/publish2.php?request=mypublish',
+            url:'re/publish2.php?request=myinfo',
             dataType:"json",
             type:"post",
             aysnc:false,
