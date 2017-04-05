@@ -1,4 +1,5 @@
 4/5
 A terrible day trapped by bugs.
-I can't get the response data so I checked all the day.When I finnally find out the reason is I use the a href and $(".classname") at the same time.So it only did the jump function.
+I can't get the response data,so I checked it all the day.
+In the end I finnally find out the reason is I use the "a href" thing and $(".classname").click() function at the same time.So it only did the first function.
 How silly I am!
