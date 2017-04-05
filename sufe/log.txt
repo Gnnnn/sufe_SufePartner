@@ -1,0 +1,4 @@
+4/5
+A terrible day trapped by bugs.
+I can't get the response data so I checked all the day.When I finnally find out the reason is I use the a href and $(".classname") at the same time.So it only did the jump function.
+How silly I am!
