@@ -2,10 +2,10 @@
  session_start();
 $request=$_GET["request"];
 
-$GLOBALS['dbip'] = '**';
-$GLOBALS['usn'] = '**';
-$GLOBALS['psw'] = '**';
-$GLOBALS['dbname'] = '**';
+$GLOBALS['dbip'] = '****';
+$GLOBALS['usn'] = '****';
+$GLOBALS['psw'] = '****';
+$GLOBALS['dbname'] = 'xcxcketest_com';
 
 if($request=="view"){
   $username=$_SESSION["username"];
@@ -319,7 +319,7 @@ if($request=="search"){
         $searchcontents = $_SESSION[searchcontents];    
         $con = new mysqli($dbip,$usn,$psw,$dbname);
         mysqli_query($con, "set names UTF8");
-        $result = mysqli_query($con,"SELECT qus2id from qus2 where title like '%{$searchcontents}%';"); 
+        $result = mysqli_query($con,"SELECT qus2id from qus2 where title like '%{$searchcontents}%';");   
         $qusnum = mysqli_num_rows($result);
         // echo $qusnum;
         $temp=array();
@@ -327,7 +327,7 @@ if($request=="search"){
                 $temp[]=$res[qus2id];
             }
           foreach ($temp as $value) {
-          $result = mysqli_query($con,"SELECT `username`,`title`,`details`,`picurl`,`time`,`helper` from qus2 where qus2id = {$value};");
+          $result = mysqli_query($con,"SELECT `username`,`title`,`details`,`picurl`,`time` from qus2 where qus2id = {$value};");
           $row = mysqli_fetch_array($result);
           $result2 = mysqli_query($con,"SELECT `userpic` from user where username = '{$row["username"]}';");
       $row2 = mysqli_fetch_array($result2);
@@ -350,7 +350,7 @@ if($request=="search"){
             $oq["title"]=$row["title"];
             $oq["details"]=$row["details"];
             $oq["qusinfo"]=$row["qusinfo"];
-            $oq["helper"]=$row["helper"];
+            $oq["helper"]=null;
             $oq["time"]=$row["time"];
           }
           $listJson[]=$oq;
@@ -557,7 +557,7 @@ if($request=="myanslist"){
       $con = new mysqli($dbip,$usn,$psw,$dbname);
       mysqli_query($con,"SET NAMES 'UTF8'");
 
-      $result=mysqli_query($con,"SELECT distinct `qus2id` FROM qus2 where helper = '{$username}';");
+      $result=mysqli_query($con,"SELECT distinct `qus2id` FROM qusid_helper where helper = '{$username}';");
       $qusnum = mysqli_num_rows($result);
       // echo $qusnum;
       // $qusnum是题目总数

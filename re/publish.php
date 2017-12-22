@@ -2,10 +2,10 @@
  session_start();
 $request=$_GET["request"];
 
-$GLOBALS['dbip'] = '**';
-$GLOBALS['usn'] = '**';
-$GLOBALS['psw'] = '**';
-$GLOBALS['dbname'] = '**';
+$GLOBALS['dbip'] = '****';
+$GLOBALS['usn'] = '****';
+$GLOBALS['psw'] = '****';
+$GLOBALS['dbname'] = 'xcxcketest_com';
 
 if($request=="islogin"){
   $username = $_SESSION["username"];
@@ -376,7 +376,7 @@ if($request=="mypublish"){
         // echo $value;
       $result = mysqli_query($con,"SELECT `qustitle`,`qusinfo`,`qustel`,`qusloca`,`over`,`qustime`,`helper` from qus where qusid = {$value};");
       $row = mysqli_fetch_array($result);
-      $result2 = mysqli_query($con,"SELECT `userpic` from user where username = '{$row["helper"]}';");
+      $result2 = mysqli_query($con,"SELECT `userpic` from user where username = '{$username}';");
       $row2 = mysqli_fetch_array($result2);
       if(!$row2["userpic"]){
         $oq["pic"]="images/f2.jpg";

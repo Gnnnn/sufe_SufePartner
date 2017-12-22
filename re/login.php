@@ -2,10 +2,10 @@
  session_start();
 $request=$_GET["request"];
 
-$GLOBALS['dbip'] = '**';
-$GLOBALS['usn'] = '**';
-$GLOBALS['psw'] = '**';
-$GLOBALS['dbname'] = '**';
+$GLOBALS['dbip'] = '****';
+$GLOBALS['usn'] = '****';
+$GLOBALS['psw'] = '****';
+$GLOBALS['dbname'] = 'xcxcketest_com';
 
 if($request=="login"){
         $user = $_POST["username"];  

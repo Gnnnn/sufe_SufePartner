@@ -1,9 +1,9 @@
 <?php  
  session_start();
-$GLOBALS['dbip'] = '**';
-$GLOBALS['usn'] = '**';
-$GLOBALS['psw'] = '**';
-$GLOBALS['dbname'] = '**';
+ $GLOBALS['dbip'] = '****';
+$GLOBALS['usn'] = '****';
+$GLOBALS['psw'] = '****';
+$GLOBALS['dbname'] = 'xcxcketest_com';
 
         $username = $_POST["username"];  
         $password = $_POST["password"];  
