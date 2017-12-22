@@ -1,9 +1,5 @@
 <?php
 session_start();
-$GLOBALS['dbip'] = '**';
-$GLOBALS['usn'] = '**';
-$GLOBALS['psw'] = '**';
-$GLOBALS['dbname'] = '**';
 
 
 header("Content-type: text/html; charset=utf-8");
@@ -87,7 +83,7 @@ header("Content-type: text/html; charset=utf-8");
             }  
             else  
             {  
-                echo "<script>alert('题目重复,请先搜索.');window.location.reload();</script>";  
+                echo "<script>alert('题目重复,请先搜索.'); history.go(-1);window.location.reload();</script>";  
                 return;
             }  
 }  
