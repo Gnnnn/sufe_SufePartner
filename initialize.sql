@@ -1,0 +1,14 @@
+delete from `user`;
+delete from qus2;
+delete from qus;
+delete from qusid_helper;
+delete from contact;
+INSERT INTO `user` VALUES ('Lilith Shawn', '1', '18715610001', 'email1', '英语,编程', '女', 'upload/2.png');
+INSERT INTO `user` VALUES ('Robert Pattinson', '1', '18715216632', 'email2', '高数,专业课', '男', 'upload/f2.jpg');
+INSERT INTO `qus2` VALUES (1, '一道数学题目', 'Lilith Shawn', '如图示', 'upload/1.jpg', '2017-12-14 10:38:00', '');
+INSERT INTO `qus2` VALUES (2, '英语翻译', 'Lilith Shawn', '求翻译', 'upload/13.jpg', '2017-12-14 10:38:00', '');
+INSERT INTO `qusid_helper` VALUES (1, 'Robert Pattinson', '这个好简单。。你真的不会吗？', '2017-12-15 11:29:54');
+INSERT INTO `qus` VALUES ('18715610001', '2017-12-21 16:30:48', '求高数大腿', '周五补考高数，求一枚大腿提携,感激不尽', '1', 'Lilith Shawn', 'math', '上海财经大学', '00000000001', 'Robert Pattinson', null, null);
+INSERT INTO `qus` VALUES ('18715216632', '2017-12-21 16:31:27', '求一个德国小语伴', '要去德国交流了，求个德国朋友一起玩啊', '2', 'Robert Pattinson', 'language', '上海财经大学', '00000000001', 'Lilith Shawn', null, null);
+INSERT INTO `qus` VALUES ('18715216632', '2017-12-21 16:32:05', '求托福大神carry', '申请出国，求大牛带带，高价聘请', '3', 'Robert Pattinson', 'english', '上海财经大学', '00000000000', null, null, null);
+INSERT INTO `qus` VALUES ('18715610001', '2017-12-21 16:35:08', '概率论考前求辅助', 'Please help!', '4', 'Lilith Shawn', 'math', '上海财经大学', '00000000000', null, null, null);
